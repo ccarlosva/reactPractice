@@ -1,8 +1,8 @@
-export default function Log({ turnLogs }) {
+export default function Log({ turns }) {
   const logArr = [];
-  for (let log of turnLogs) {
-    const { square, player } = log;
-    logArr.push(log);
+  for (let turn of turns) {
+    const { square, player } = turn;
+    logArr.push(turn);
   }
 
   return (
@@ -10,11 +10,11 @@ export default function Log({ turnLogs }) {
     <ol id="log">
       {/* logArr.map((log, index) => (...)): This is using the map function to iterate over each item in the logArr array. 
         For each item, it calls the provided function (.map) with two arguments: the current item (log) and its index (index). */}
-      {logArr.map((log, index) => (
+      {logArr.map((turn, index) => (
         <li key={index}>
           <p>
-            Player {log.player} placed a symbol at row {log.square.row}, column
-            {log.square.col}
+            Player {turn.player} placed a symbol at coordinates{" "}
+            {turn.square.row}, {turn.square.col}
           </p>
         </li>
       ))}

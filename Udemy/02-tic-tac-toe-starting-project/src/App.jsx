@@ -23,7 +23,6 @@ function App() {
       ];
       return updatedTurns;
     });
-    // setPlayerName(() => {});
   }
 
   return (
@@ -47,7 +46,7 @@ function App() {
           turns={gameTurns}
         />
       </div>
-      <Log turnLogs={gameTurns} />
+      <Log turns={gameTurns} />
     </main>
   );
 }
