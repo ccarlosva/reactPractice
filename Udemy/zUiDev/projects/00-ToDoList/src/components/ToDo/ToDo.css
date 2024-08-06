@@ -1,0 +1,24 @@
+.todo-container{
+    display: flex;
+    align-items: center;   
+}
+
+.todo-container span {
+    margin: 0 10px;
+}
+
+.todo-container{
+    margin-left: auto;
+}
+
+.checked{
+    text-decoration: line-through;
+}
+
+.todo-item{
+    cursor: pointer;
+}
+
+ul{
+    list-style-type: none;
+}
