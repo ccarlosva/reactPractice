@@ -3,11 +3,10 @@ import * as React from "react";
 import PropTypes from 'prop-types';
 
 
-export default function ToDo({todo,handleUpdateTodo}) {
- 
+export default function ToDo({todo, handleUpdateTodo, handleDeleteTodo}) {
     const [editing, setEditing] = React.useState(false)
-
     const handleEditClick = () => setEditing(!editing)
+
     const handleCheckboxClick = () => handleUpdateTodo({
         ...todo,
         completed: !todo.completed
@@ -17,6 +16,10 @@ export default function ToDo({todo,handleUpdateTodo}) {
         label: e.target.value
     })
 
+    const handleDeleteClick= () => handleDeleteTodo(todo.id)
+    
+
+
     ToDo.propTypes = {
         todo: PropTypes.shape({
           id: PropTypes.number.isRequired,
@@ -24,6 +27,8 @@ export default function ToDo({todo,handleUpdateTodo}) {
           completed: PropTypes.bool.isRequired,
         }).isRequired,
         handleUpdateTodo: PropTypes.func.isRequired,
+        handleDeleteTodo: PropTypes.func.isRequired,
+        
       };
 
     return(
@@ -47,7 +52,10 @@ export default function ToDo({todo,handleUpdateTodo}) {
                 }
                  </div>
                 <button onClick={handleEditClick}>{editing ? "Save" : "Edit"}</button>
+                <button onClick={handleDeleteClick}>Delete</button>
             </label>
         </li>
     )   
 }
+
+
