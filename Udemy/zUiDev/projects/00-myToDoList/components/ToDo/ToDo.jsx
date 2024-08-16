@@ -1,29 +1,49 @@
-// import React from "react";
+import React from "react";
 
 export default function ToDo () {
+    const defaultTodo = {
+        completed: false,
+        todo: "Do something cool",
+        id: 1,
+    }
+    
+    const [todo,setTodo] = React.useState(defaultTodo)
+    const [editing, setEditing] = React.useState(false)
     const handleEditTodo = (e) => {
-        e.target.value
+        setTodo({...todo, todo: e.target.value})
     }
     const handleCheckboxClick = () => {
-        
+        setTodo({ 
+            ...todo,
+            completed: !todo.completed
+     })
     }
+
+    const handleEditClick =() => {
+        setEditing(!editing)
+    }
+ 
     return(
-        <>
-            <ul>
-                <li>
+    <>
+        <li>
+            <label htmlFor={todo.id}>
+                <div>
                     <input 
                     type="checkbox" 
-                    checked = {false}
+                    id={todo.id}
                     onChange={handleCheckboxClick}
-                    id="1"
                     />
-                <input
-                    type="text"
-                    value=""
+                
+                    <input type="text"
+                    value={todo.todo}
                     onChange={handleEditTodo}
-                />
-                </li>
-            </ul>
-        </>
+                    />
+
+                    <button onClick={handleEditClick}>Edit</button>
+                </div>
+
+            </label>
+        </li>
+    </>
     )
 }
